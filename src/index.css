@@ -11,3 +11,91 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Ipod{
+  position : realtive;
+  height  : 80vh;
+  width : 20rem;
+  border: 2px solid black;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding : 1rem;
+}
+
+.Screen{
+  height :48%;
+  width  : 98%;
+  border : 2px solid black;
+  /* display: flex; */
+  /* border-radius : 2rem 2rem 0 0; */
+}
+
+.navButton{
+  width : 80%;
+  border : 2px solid black;
+  height : 15em;
+  border-radius : 50%;
+  display : grid;
+  grid-template-columns : 32% 32% 32%;
+  grid-template-rows : 32% 32% 32% ;
+  justify-content:center;
+  align-content:center;
+  overflow:hidden;
+}
+
+.topButton{
+  grid-column : 1 /span 3;
+  grid-row : 1 / span 1;
+  padding:2rem;
+  font-weight: 600;
+}
+
+.bottomButton{
+  grid-column : 1 / span 3;
+  grid-row: 3 /span 1;
+}
+
+.leftButton{
+  grid-column : 1 / span 1;
+  grid-row: 1 /span 3;
+}
+
+.rightButton{
+  grid-column : 3 / span 1;
+  grid-row: 1 /span 3;
+}
+.midButton{
+  grid-column : 2 / span 1;
+  grid-row: 2 /span 1;
+  border : 2px solid black;
+  border-radius : inherit;
+  padding:1.5rem;
+}
+
+.leftButton img{
+  transform: rotate(180deg);
+}
+
+.iconCentered img{
+  height : 1rem;
+  width : 1rem;
+  position : relative;
+  top: 45%;
+}
+
+.Menu{
+  border : 2px solid black;
+  width : 50%;
+  height: 100%;
+  overflow:scroll;
+}
+
+.title{
+  width : 100%;
+  border : 2px solid black;
+  
+
+}
