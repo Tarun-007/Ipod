@@ -5,7 +5,7 @@ export default function Menu(props) {
     const { items } = props;
     return (
         <div className="Menu">
-            <div className="title">Menu Title</div>
+            <div className="title"><span>Menu Title</span></div>
             {items.map((item) => {
                     return (
                         <MenuItem item={item}/>

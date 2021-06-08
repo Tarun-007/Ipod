@@ -1,9 +1,9 @@
 
 
-export default function MenuItem() {
+export default function MenuItem(props) {
     return (
-        <div>
-            
+        <div className = 'menuItem'>
+            {props.item}
        </div>
     )
 }
