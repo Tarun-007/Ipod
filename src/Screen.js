@@ -5,12 +5,11 @@ import React from 'react';
 class Screen extends React.Component {
   
   render() {
-    const {items,handlerRotateClockWise,handlerRotateCounterClockWise}
+    const { items, handlerSelectDown, handlerSelectUp } = this.props;
     return (
       <div className="Screen">
         <Menu
-          items={this.props.items}
-          
+          items={items}
         />
         
       </div>
