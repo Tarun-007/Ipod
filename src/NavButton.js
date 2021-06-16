@@ -1,16 +1,18 @@
 
 import ZingTouch from 'zingtouch';
 import React from 'react';
-import 'jquery';
+import $ from 'jquery';
 
 
 
 class NavButton extends React.Component {
 
+   
+
     componentDidMount() {
         var touchArea = document.querySelector('.navButton');
         var myRegion = new ZingTouch.Region(touchArea);
-        const { handlerSelectDown, handlerSelectUp } = this.props;
+        const { handlerSelectDown, handlerSelectUp ,selectOption, backButton,toggleMenuDisplay} = this.props;
         myRegion.bind(touchArea, 'rotate', function (e) {
             if (e.detail.distanceFromOrigin < 0 && Math.floor(e.detail.angle % 40) === 0) {
                 console.log("moving in counter clock direction", e.detail, e)
@@ -22,25 +24,26 @@ class NavButton extends React.Component {
             }
         });
 
-
+        
+        var longTap = new ZingTouch.Tap({
+            maxDelay: 2000
+        })
         var midButton = document.getElementById('mid');
         var regionOne = new ZingTouch.Region(midButton, true, false);
-        var longTap = new ZingTouch.Tap({
-            maxDelay: 1000
-        })
-        regionOne.bind(midButton, longTap, function (e) {
-            console.log("mid button tabpped")
-            
-        });
+        regionOne.bind(midButton, longTap, selectOption);
 
-        
-        
-    
+        var topButton = document.querySelector('.topButton');
+        var region2 = new ZingTouch.Region(topButton, true, false);
+        region2.bind(topButton, longTap, toggleMenuDisplay);
 
+        var leftButton = document.querySelector('.leftButton');
+        var region3 = new ZingTouch.Region(leftButton, true, false);
+        region3.bind(leftButton, longTap, backButton);
 
     }
 
     render() {
+        
 
         return (
             <div className="navButton iconCentered">

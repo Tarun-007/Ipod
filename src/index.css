@@ -88,15 +88,14 @@ code {
 }
 
 .Menu{
-  width : 50%;
+  width : 0%;
   height: 100%;
   overflow:scroll;
   position: relative;
   padding-bottom: 0;
   border-right: 1px solid grey;
   scroll-padding: 0px 0px 0px 0px;
-
- 
+  transition: all 0.5s linear; 
 }
 
 .Menu::-webkit-scrollbar {
@@ -131,5 +130,12 @@ code {
 
 .highLightItem{
   background-color: blue;
-  transition: all 2s ease-in;
 }
+
+.openMenu{
+  width : 50%;
+  
+}
+
+
+

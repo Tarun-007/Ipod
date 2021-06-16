@@ -4,10 +4,11 @@ export default function MenuItem(props) {
     const item = props.item
     return (
         <div
-            className='menuItem'
-            style={{ backgroundColor: item.selected ? 'blue' : null }}
+            className={item.selected ? 'menuItem highLightItem' : 'menuItem'}
+            
         >
             {props.item.name}
        </div>
     )
 }
+

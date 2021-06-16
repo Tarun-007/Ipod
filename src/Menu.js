@@ -2,11 +2,12 @@
 import MenuItem from './MenuItem'
 
 export default function Menu(props) {
-    const { items } = props;
+    const { items,title } = props;
     return (
-        <div className="Menu">
+        <div className="Menu openMenu"
+        >
             <div className="title">
-                <span>Menu Title</span>
+                <span>{title}</span>
             </div>
             {items.map((item) => <MenuItem item={item} key={item.id}/>) }
         </div>
