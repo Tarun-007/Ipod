@@ -146,7 +146,8 @@ class Ipod extends React.Component {
     });
 
     const selectedElement = document.querySelector('.highLightItem');
-    selectedElement.scrollIntoView({ behavior: 'smooth' })
+    console.log('scrolling to the top')
+    selectedElement.scrollIntoView(true);
   }
 
   toggleMenuDisplay() {
@@ -182,6 +183,10 @@ class Ipod extends React.Component {
     
   }
 
+  volumehandler() {
+    
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -190,6 +195,7 @@ class Ipod extends React.Component {
           items={this.state.currentMenu.items}
           title={this.state.currentMenu.title}
           image={this.state.currentBackground}
+          volumePercentage={this.state.volumePercentage}
         />
         <NavButton
           handlerSelectDown={this.handlerSelectDown}
@@ -197,6 +203,7 @@ class Ipod extends React.Component {
           toggleMenuDisplay={this.toggleMenuDisplay}
           selectOption={this.selectOption}
           backButton={this.backButton}
+          volumehandler={this.volumehandler}
         />
       </div>
     )

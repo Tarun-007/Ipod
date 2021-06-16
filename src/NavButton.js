@@ -14,7 +14,7 @@ class NavButton extends React.Component {
         var myRegion = new ZingTouch.Region(touchArea);
         const { handlerSelectDown, handlerSelectUp ,selectOption, backButton,toggleMenuDisplay} = this.props;
         myRegion.bind(touchArea, 'rotate', function (e) {
-            if (e.detail.distanceFromOrigin < 0 && Math.floor(e.detail.angle % 40) === 0) {
+            if (e.detail.distanceFromOrigin < 0 && Math.floor(e.detail.angle % 30) === 0) {
                 console.log("moving in counter clock direction", e.detail, e)
                 handlerSelectUp();
             } else if (e.detail.distanceFromOrigin > 0 && Math.floor(e.detail.angle % 40) === 0) {

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #9e4821;
 }
 
 code {
@@ -16,26 +17,29 @@ code {
   position : realtive;
   height  : 80vh;
   width : 20rem;
-  border: 2px solid black;
+  border: 0.5px solid black;
   border-radius: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   padding : 1rem;
+  background-color:#66555f;
+  box-shadow: 2px 2px 20px black;
 }
 
 .Screen{
   height :48%;
   width  : 98%;
-  border : 2px solid black;
+  border : 1px solid black;
+  opacity : 0.7;
   /* display: flex; */
   /* border-radius : 2rem 2rem 0 0; */
 }
 
 .navButton{
   width : 80%;
-  border : 2px solid black;
+  /* border : 0.2px solid black; */
   height : 15em;
   border-radius : 50%;
   display : grid;
@@ -44,6 +48,8 @@ code {
   justify-content:center;
   align-content:center;
   overflow:hidden;
+  background-color: #aa6f73;
+  /* box-shadow:  -1px 1px 10px black; */
 }
 
 .topButton{
@@ -70,10 +76,12 @@ code {
 .midButton{
   grid-column : 2 / span 1;
   grid-row: 2 /span 1;
-  border : 2px solid black;
+  /* border : 2px solid black; */
   border-radius : inherit;
   padding:1.5rem;
   z-index: 3;
+  background-color: #a39193;
+  box-shadow: inset 1px 1px 10px black;
 }
 
 .leftButton img{
@@ -93,9 +101,11 @@ code {
   overflow:scroll;
   position: relative;
   padding-bottom: 0;
-  border-right: 1px solid grey;
+  /* border-right: 1px solid grey; */
   scroll-padding: 0px 0px 0px 0px;
   transition: all 0.5s linear; 
+  background-color: #eea990;
+  box-shadow:  0.8px 0px 10px black ;
 }
 
 .Menu::-webkit-scrollbar {
@@ -108,6 +118,7 @@ code {
   width : 100%;
   /* border : 2px solid black; */
   height: 30%;
+  box-shadow: inset 0px 1px 20px #aa6f73;
 }
 .title span{
   position: relative;
@@ -126,15 +137,36 @@ code {
   /* overflow-y: scroll; */
   /* position: absolute; */
   transition: all 0.2s linear;
+  box-shadow: inset 1px 1px 30px #aa6f73;
 }
 
 .highLightItem{
-  background-color: blue;
+  background-color: #f6e0b5;
 }
 
 .openMenu{
   width : 50%;
   
+}
+
+.volumeContainer{
+  position: relative;
+  display: inline-block;
+  top : -85%;
+  left: 40%;
+  height: 70% ;
+  width: 2rem;
+  border-radius: 10rem;
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+.volume{
+  background-color: #66555f;
+  height: 100%;
+  width: 100%;
+  bottom: -20%;
+  position: relative;
 }
 
 
