@@ -10,7 +10,7 @@ class Ipod extends React.Component {
     super();
     this.state = {
       volumePercentage: '-40%',
-      currentBackground:'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-rap-songs-1583527287.png',
+      currentBackground:'https://i.redd.it/qpz89816tsa21.jpg',
       title: 'Main',
       items: [{
         name: 'songs',
