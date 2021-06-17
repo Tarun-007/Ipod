@@ -14,10 +14,10 @@ class NavButton extends React.Component {
         var myRegion = new ZingTouch.Region(touchArea);
         const { handlerSelectDown, handlerSelectUp ,selectOption, backButton,toggleMenuDisplay} = this.props;
         myRegion.bind(touchArea, 'rotate', function (e) {
-            if (e.detail.distanceFromOrigin < 0 && Math.floor(e.detail.angle % 30) === 0) {
+            if (e.detail.distanceFromOrigin < 0 && Math.floor(e.detail.angle % 30) === 0) { // counter clock directon
                 console.log("moving in counter clock direction", e.detail, e)
                 handlerSelectUp();
-            } else if (e.detail.distanceFromOrigin > 0 && Math.floor(e.detail.angle % 40) === 0) {
+            } else if (e.detail.distanceFromOrigin > 0 && Math.floor(e.detail.angle % 40) === 0) { // clock wise direction
                 console.log('moving in clock wise direction');
                 handlerSelectDown();
 
@@ -29,15 +29,15 @@ class NavButton extends React.Component {
             maxDelay: 2000
         })
         var midButton = document.getElementById('mid');
-        var regionOne = new ZingTouch.Region(midButton, true, false);
+        var regionOne = new ZingTouch.Region(midButton, true, false); // mid button event listener
         regionOne.bind(midButton, longTap, selectOption);
 
         var topButton = document.querySelector('.topButton');
-        var region2 = new ZingTouch.Region(topButton, true, false);
+        var region2 = new ZingTouch.Region(topButton, true, false);  // top button event listener
         region2.bind(topButton, longTap, toggleMenuDisplay);
 
         var leftButton = document.querySelector('.leftButton');
-        var region3 = new ZingTouch.Region(leftButton, true, false);
+        var region3 = new ZingTouch.Region(leftButton, true, false);  // left button event listener
         region3.bind(leftButton, longTap, backButton);
 
     }

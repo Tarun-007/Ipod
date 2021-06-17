@@ -1,14 +1,15 @@
-import Screen from './Screen';
-import NavButton from './NavButton';
+import Screen from './ScreenComponents/Screen';
+import NavButton from './Buttons/NavButton';
 import React from 'react';
 import $ from 'jquery';
-
+import VolumeButtons from './Buttons/VolumeButton'
 
 class Ipod extends React.Component {
 
   constructor() {
     super();
     this.state = {
+      volumePercentage: '-40%',
       currentBackground:'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-rap-songs-1583527287.png',
       title: 'Main',
       items: [{
@@ -78,31 +79,8 @@ class Ipod extends React.Component {
 
       ]
     }
-
-    let currentMenu = this.state;
+    let currentMenu = this.state;  // current menu stored in this property. whenever menu changes this property will be assigned
     this.state.currentMenu = currentMenu;
-
-    // console.log('mounting component');
-    // this.setState(prevState => {
-
-    //   let newState = {
-    //     // object that we want to update
-    //     ...prevState.jasper,    // keep all other key-value pairs
-    //     currentMenuItems: prevState.items      // update the value of specific key
-
-    //   }
-    //   console.log(newState);
-    //   return newState;
-
-    // });
-
-
-
-
-
-  }
-
-  componentDidMount() {
 
   }
 
@@ -112,15 +90,14 @@ class Ipod extends React.Component {
     })[0]
   }
 
+  // nav button rotate clockWise action 
   handlerSelectDown = () => {
     const item = this.findSelectedItem();
-    console.log('selected item is ', item)
     const currentMenu = this.state.currentMenu;
     const items = currentMenu.items;
     const index = items.indexOf(item);
-    console.log('setting selected true for the item', index, items[index]);
     items[index].selected = false;
-    const newIndex = (index + 1) % items.length;
+    const newIndex = (index + 1) % items.length;  // to give rotating select effect
     items[newIndex].selected = true
     currentMenu.items = items;
     this.setState({
@@ -130,15 +107,15 @@ class Ipod extends React.Component {
     selectedElement.scrollIntoView({ behavior: 'smooth' })
   }
 
+
+  //navButton rotate anti- clock wise action 
   handlerSelectUp = () => {
     const item = this.findSelectedItem();
-    console.log('selected item is ', item)
     const currentMenu = this.state.currentMenu;
     const items = currentMenu.items;
     const index = items.indexOf(item);
     items[index].selected = false;
-    const newIndex = Math.abs((index - 1 + items.length) % items.length);
-    console.log("new index is ", newIndex);
+    const newIndex = Math.abs((index - 1 + items.length) % items.length); // rotating select effect 
     items[newIndex].selected = true;
     currentMenu.items = items;
     this.setState({
@@ -146,7 +123,6 @@ class Ipod extends React.Component {
     });
 
     const selectedElement = document.querySelector('.highLightItem');
-    console.log('scrolling to the top')
     selectedElement.scrollIntoView(true);
   }
 
@@ -155,22 +131,20 @@ class Ipod extends React.Component {
     menu.toggleClass('openMenu')
   }
 
+  //nav button when selected an option ( click middle button )
   selectOption = () => {
     const currentMenuItems = this.state.currentMenu.items;
-    console.log("selected option is ", this, currentMenuItems);
     const item = this.findSelectedItem();
     let index = currentMenuItems.indexOf(item);
-    console.log('index of current menu', index)
     if (currentMenuItems[index].hasOwnProperty('subMenu')) {
-      console.log("settting the sub menu")
       this.setState({ currentMenu: currentMenuItems[index].subMenu });
     } else {
-      console.log("setting the background image");
       this.setState({currentBackground : currentMenuItems[index].img})
     }
     console.log(this.state.currentMenu)
   }
 
+  // previous menu ( click left nav button )
   backButton = () => {
     const menu = this.state;
     const title = menu.currentMenu.title;
@@ -183,7 +157,24 @@ class Ipod extends React.Component {
     
   }
 
-  volumehandler() {
+  //volume level handler increment or decrease
+  volumehandler = (param) => {
+    $('.volumeContainer').removeClass('hide');
+    const currentPercentage = this.state.volumePercentage;
+    let percentage = Number(currentPercentage.slice(0, -1));
+    console.log(param,percentage);
+    if (param) {
+      percentage += 10;  
+    } else {
+      percentage -= 10
+    }
+    if (percentage < 0 && percentage > -100) {
+      percentage = percentage + '%';
+      this.setState({volumePercentage: percentage})
+    }
+    setTimeout(() => {
+      $('.volumeContainer').addClass('hide');
+    },2500)
     
   }
 
@@ -196,6 +187,9 @@ class Ipod extends React.Component {
           title={this.state.currentMenu.title}
           image={this.state.currentBackground}
           volumePercentage={this.state.volumePercentage}
+        />
+        <VolumeButtons
+          volumeHandler = {this.volumehandler}
         />
         <NavButton
           handlerSelectDown={this.handlerSelectDown}

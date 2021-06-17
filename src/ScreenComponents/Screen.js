@@ -1,5 +1,5 @@
 
-import Menu from './Menu';
+import Menu from './MenuComponents/Menu';
 import React from 'react';
 import Volume from './Volume';
 
